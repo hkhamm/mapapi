@@ -1,6 +1,6 @@
 var mapapp = {};
 
-mapapp.map = L.map('map', {layers: MQ.mapLayer()}).setView([44.049, -123.095], 13);
+mapapp.map = L.map('map').setView([44.049, -123.095], 13);
 
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
@@ -11,9 +11,11 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
     accessToken: 'pk.eyJ1IjoiaGtoYW1tIiwiYSI6ImNpZndzZ3c4dzM3cmx1ZGx5MzIyNnU5YXkifQ.RzTbznkqSh_oZrOY64dBdA'
 }).addTo(mapapp.map);
 
+mapapp.geocode = MQ.geocode();
+
 mapapp.map.on('click', function(e) {
-    var popup = L.popup();
     var marker = L.marker();
+    var popup = L.popup();
 
     marker.setLatLng(e.latlng)
           .on('popupopen', function() {
@@ -26,10 +28,10 @@ mapapp.map.on('click', function(e) {
           .addTo(mapapp.map);
 
 
-    var geocode = MQ.geocode().on('success', function(e) {
-        popup.setContent(geocode.describeLocation(e.result.best) +
+    mapapp.geocode.on('success', function(e) {
+        popup.setContent(mapapp.geocode.describeLocation(e.result.best) +
             "<div class='popup'><input type='button' value='Delete' class='marker-delete-button'/></div>");
     });
 
-    geocode.reverse(e.latlng);
+    mapapp.geocode.reverse(e.latlng);
 });
