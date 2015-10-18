@@ -1,0 +1,12 @@
+#map {
+    height: 600px;
+}
+
+.popup {
+    text-align: center;
+}
+
+.marker-delete-button {
+    display: inline-block;
+    margin-top: 10px;
+}
