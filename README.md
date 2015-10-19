@@ -1,6 +1,6 @@
 # proj4-mapapi
 
-The map starts in Eugene, OR. The user may drop markers anywhere on the map. The marker's have a right-click popup that displays the location's street address, city, and state.
+The map starts in Eugene, OR. The user may drop markers anywhere on the map. The marker's have a right-click popup that displays the location's street address, city, state, and a button to delete the marker.
 
 ### Resources
 - [Leaflet](http://leafletjs.com/)
