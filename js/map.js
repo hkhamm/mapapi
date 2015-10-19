@@ -33,6 +33,12 @@ mapapp.map.on('click', function(e) {
             "<div class='popup'><button class='delete-btn'/>Delete</button></div>");
     });
 
+    mapapp.geocode.on('error', function(e) {
+        console.log('Error getting geocode data.');
+        mapapp.popup.setContent('Error' +
+            "<div class='popup'><button class='delete-btn'/>Delete</button></div>");
+    });
+
     mapapp.geocode.reverse(e.latlng);
     //mapapp.getData(e.latlng);
 });
