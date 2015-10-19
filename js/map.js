@@ -13,6 +13,7 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
 
 mapapp.geocode = MQ.geocode();
 mapapp.popup = L.popup();
+mapapp.deleteBtn = "<div class='popup'><button class='delete-btn'/>Delete</button></div>";
 
 mapapp.map.on('click', function(e) {
     var marker = L.marker();
@@ -29,14 +30,12 @@ mapapp.map.on('click', function(e) {
           .addTo(mapapp.map);
 
     mapapp.geocode.on('success', function(e) {
-        mapapp.popup.setContent(mapapp.geocode.describeLocation(e.result.best) +
-            "<div class='popup'><button class='delete-btn'/>Delete</button></div>");
+        mapapp.popup.setContent(mapapp.geocode.describeLocation(e.result.best) + mapapp.deleteBtn);
     });
 
     mapapp.geocode.on('error', function(e) {
         console.log('Error getting geocode data.');
-        mapapp.popup.setContent('Error' +
-            "<div class='popup'><button class='delete-btn'/>Delete</button></div>");
+        mapapp.popup.setContent('Error' + mapapp.deleteBtn);
     });
 
     mapapp.geocode.reverse(e.latlng);
