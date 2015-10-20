@@ -39,23 +39,4 @@ mapapp.map.on('click', function(e) {
     });
 
     mapapp.geocode.reverse(e.latlng);
-    //mapapp.getData(e.latlng);
 });
-
-//mapapp.URL = 'http://www.mapquestapi.com/geocoding/v1/reverse?key=YOUR_KEY_HERE&callback=mapapp.setPopupText';
-//mapapp.APP_KEY = 'p5GL60VVAmyGW7FZgmZUUXtaPbiHAYqS';
-//mapapp.request = '';
-//
-//mapapp.getData = function(latlng) {
-//    var script = document.createElement('script');
-//    script.type = 'text/javascript';
-//    mapapp.request = mapapp.URL + '&json={location:{latLng:{lat:'+ latlng.lat + ',lng:' + latlng.lng + '}}}';
-//    script.src = mapapp.request.replace('YOUR_KEY_HERE', mapapp.APP_KEY);
-//    document.body.appendChild(script);
-//};
-//
-//mapapp.setPopupText = function(response) {
-//    var location = response.results[0].locations[0];
-//    mapapp.popup.setContent(location.street + "<br>" + location.adminArea5 + ", " + location.adminArea3 +
-//        "<div class='popup'><button class='delete-btn'/>Delete</button></div>");
-//};
